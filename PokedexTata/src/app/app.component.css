@@ -1,10 +1,80 @@
-.btnPost{
-    display: flex;
+
+html {
+    height: 1000px;
 }
-.searchGroup{
+
+h1 {
+    padding-top: 5%;
+}
+
+body {
+    margin: 0;
+    background: #f8f8ff;
+    font-family: sans-serif;
+    font-weight: 100;
+}
+
+footer {
+    text-align: center;
+    background: #f8f8ff;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 40px;
+}
+
+table {
+    width: 800px;
+    border-collapse: collapse;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+th,
+td {
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: black;
+}
+
+th {
+    text-align: left;
+}
+
+thead {    
+        background-color: #55608f;
+}
+
+tbody, td :hover { 
+        position: relative;
+        background-color: rgba(255,255,255,0.2);
+}
+
+.btnPost {
+    display: flex;
+    float: right;
+    padding: 6px;
+    border: 1px solid lightgray;
+    margin-top: 26px;
+    margin-right: 16px;
+    font-size: 17px;
+    border-radius: 2px;
+    background-color: #55608f;
+    color: white;
+}
+.containerModal{
+    
+    width: 920px;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 62px 55px 90px 55px;
+}
+.searchGroup {
     display: inline-flex;
 }
-.searchImage{
+
+.searchImage {
     display: flex;
     align-items: flex-end;
     margin: 15px;
@@ -12,17 +82,102 @@
     width: 50px;
     height: 50px;
     left: 78px;
-    border: 1px solid rgba(209, 200, 200, 0.55);
+    /* border: 1px solid rgba(209, 200, 200, 0.55); */
     box-sizing: border-box;
     cursor: pointer;
     font-size: 20px;
 }
-#searchPoke{
+
+.topnav input[type=text] {
+    float: left;
+    padding: 6px;
+    border: 1px solid lightgray;
+    margin-top: 26px;
+    margin-right: 16px;
+    font-size: 17px;
+    border-radius: 2px;
+}
+
+.topnav .search-container button {
+    float: left;
+    padding: 6px 10px;
+    margin-top: 26px;
+    margin-right: 16px;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+    background: none;
+    position: relative;
+    left: -6%;
+}
+
+.topnav .search-container button:hover {
+    background: #ccc;
+}
+
+
+#searchPoke {
     height: 50px;
     border: 1px 1px 0px 1px solid rgba(209, 200, 200, 0.55);
-    
-    
+
+
 }
-#searchPokemons{
+
+#searchPokemons {
     display: flex;
+}
+
+#containerCards {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    box-shadow: 5%;
+    border-radius: 5px;
+    /* background: rgb(223, 221, 221); */
+}
+
+#containerForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    /* background: rgb(223, 221, 221) */
+}
+#delete{
+    background: rgb(216, 24, 24);
+    border: none;
+    border-radius: 2px;
+}
+#edit{
+    background: rgb(225, 200, 12);
+    border: none;
+    border-radius: 2px;
+
+}
+
+@media screen and (max-width: 767px) {
+    .tableResponsive {
+        width: 100%;
+        margin-bottom: 15px;
+        overflow-y: hidden;
+        -ms-overflow-style: -ms-autohiding-scrollbar;
+        border: 1px solid #ddd;
+    }
+
+    .tableResponsive>.table {
+        margin-bottom: 0;
+    }
+
+    .tableResponsive>.table>thead>tr>th,
+    .tableResponsive>.table>tbody>tr>th,
+    .tableResponsive>.table>tfoot>tr>th,
+    .tableResponsive>.table>thead>tr>td,
+    .tableResponsive>.table>tbody>tr>td,
+    .tableResponsive>.table>tfoot>tr>td {
+        white-space: nowrap;
+    }
 }

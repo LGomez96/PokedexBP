@@ -1,0 +1,28 @@
+.container{
+    
+    width: 920px;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 62px 55px 90px 55px;
+}
+form{
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: center;
+    padding: 5%;
+   }
+
+#close{
+    background: rgb(216, 24, 24);
+    border: none;
+    border-radius: 2px;
+}
+#send{
+    background: rgb(0, 153, 0);
+    border: none;
+    border-radius: 2px;
+}
+ 

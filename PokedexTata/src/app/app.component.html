@@ -1,19 +1,67 @@
 <!DOCTYPE html>
 <html>
-  <header>
-    <h1>Listado de Pokemon</h1>
-  </header>
-   <section>
-    <div id="searchPokemons">
-      <div id="searchGroup" class="searchGroup"> 
-        <img src="../assets/icons8-búsqueda.svg" alt="searchImage" class="searchImage">
-        <input type="search" id="searchPoke" placeholder="Buscar" />
-      </div>
-      <button class="btnPost">Nuevo</button>
+  <body>
+<header>
+  <h1>Listado de Pokemon</h1>
+</header>
+<section id="containerBody">
+  <div class="topnav">
+    <div class="search-container">
+      <form action="">
+        <input  
+        (blur)="blurEvent()"
+        (ngModelChange)="observerChangeSearch()"
+        #inputSearch
+        [formControl]="control"
+        type="text" 
+        placeholder="Buscar...">
+        <button type="submit"><i class="fa fa-search"></i></button>
+      </form>
     </div>
-    <div id="container"></div>
-    <div id="containerModal"></div>
-   </section>
-  <footer>By Tata</footer>
+  </div>
+  
+    <button (click)=" addNewPokemon()" class="btnPost">Nuevo</button>
+    <ng-container class="containerModal" *ngIf="isShown==true">
+    <app-form></app-form>
+  </ng-container>
+     
+<ng-container >
+  <div id="containerCards" >
+    <div *ngIf="!loading" class="tableResponsive " >
+      <ng-container >
+      <table class="table" >
+        <thead>
+        <tr>
+          <th>  Nombre </th>
+          <th>  Imagen </th>
+          <th>  Ataque </th>
+          <th>  Defensa </th>
+          <th>  Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr  *ngFor=" let pokemon of arrayPokemon">
+          <td>{{pokemon.name}}</td>
+          <td><img src="{{pokemon.img}}" alt="imagen"> </td>
+          <td>{{pokemon.attack}}</td>
+          <td>{{pokemon.defense}}</td>
+          <td>
+            <button [routerLink]="['/form/edit/', pokemon.id]"  id="edit">Editar</button>
+            <button (click)="deletePokemonById(pokemon)" id="delete">Borrar</button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </ng-container>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  <br>
+  <div id="containerModal" *ngIf="loading">
+    <span>Cargando ...</span>
+  </div>
+</ng-container>
+</section>
+<footer>By Tata</footer>
+</body>
 </html>
-<router-outlet></router-outlet>

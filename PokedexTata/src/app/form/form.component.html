@@ -1,0 +1,25 @@
+<ng-container class="container">
+    <section class="formSection">
+    <form [formGroup]="form" (submit)="newPokemon()" id="containerForm">
+      <label for="">Id</label>
+      <input formControlName="id" type="text">
+      <label for="">Nombre</label>
+      <input formControlName="name" type="text">
+      <label for="">Imagen</label>
+      <input formControlName="image" type="text">
+      <label for="">Ataque</label>
+      <input formControlName="attack" type="text">
+      <label for="">Defensa</label>
+      <input formControlName="defense" type="text">
+      <label for="">HP</label>
+      <input formControlName="hp" type="text">
+      <label for="">ID de Author</label>
+      <input formControlName="idAuthor" type="text">
+      <label for="">Tipo</label>
+      <input formControlName="type" type="text">
+      <input type="submit" value="Enviar" id="send">
+      <button (click)="closeModal()" id="close" >x</button>
+    </form>
+  
+</section>
+  </ng-container>
