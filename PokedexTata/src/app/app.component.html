@@ -26,7 +26,7 @@
   </ng-container>
      
 <ng-container >
-  <div id="containerCards" >
+  <div id="containerCards"  >
     <div *ngIf="!loading" class="tableResponsive " >
       <ng-container >
       <table class="table" >
@@ -42,7 +42,7 @@
         <tbody>
         <tr  *ngFor=" let pokemon of arrayPokemon">
           <td>{{pokemon.name}}</td>
-          <td><img src="{{pokemon.img}}" alt="imagen"> </td>
+          <td><img src="{{pokemon.image}}" alt="imagen"> </td>
           <td>{{pokemon.attack}}</td>
           <td>{{pokemon.defense}}</td>
           <td>

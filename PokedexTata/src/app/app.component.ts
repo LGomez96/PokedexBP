@@ -1,7 +1,7 @@
 
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { debounceTime,  filter } from 'rxjs';
+import { debounceTime, filter } from 'rxjs';
 import { CrudPokemonService } from './services/crud-pokemon.service';
 
 @Component({
@@ -20,7 +20,7 @@ export class AppComponent {
   inputSearch?= ElementRef;
   form !: FormGroup;
   isShown!: boolean;
-  
+
   pokemonList: boolean = false;
 
   constructor(private pokemonService: CrudPokemonService, private formBuilder: FormBuilder) {
@@ -28,6 +28,7 @@ export class AppComponent {
   }
 
   ngOnInit(): void {
+    this.filterByName();
     this.pokemonService.$modal.subscribe((value) => { this.isShown = value })
     this.getAllPokemonsByAuthorOne();
     //this.observerChangeSearch();
@@ -48,6 +49,8 @@ export class AppComponent {
     this.pokemonService.getPokemon()
       .subscribe({
         next: res => {
+          this.arrayPokemon = res
+
           console.info('Pokemones en la db =>', res)
 
         }
@@ -62,12 +65,22 @@ export class AppComponent {
           const arrayPokemonFilter = res.filter((element: any) => element.name.includes(query))
           //console.log('find', arrayPokemonFilter )
           this.arrayPokemon = arrayPokemonFilter;
+
           this.loading = false;
           return (this.arrayPokemon.length === 0) ? alert('Este pokemon no existe en la base de datos') : this.arrayPokemon
         }
 
       });
   }
+
+  filterByName() {
+
+    this.arrayPokemon.filter((element: any) => {
+      console.log(element)
+      element.name == 'name'
+    })
+  }
+
 
   blurEvent() {
     console.log('your blur evenet')
@@ -81,24 +94,24 @@ export class AppComponent {
     console.log(pokemon)
   }
 
-  deletePokemonById(id: number){
-    if (confirm('¿Estas seguro de elimarlo?')){
+  deletePokemonById(id: number) {
+    if (confirm('¿Estas seguro de elimarlo?')) {
       this.pokemonService.deletePokemon(id)
-      .subscribe({
-        next: res => {
-          const arrayWithoutPokemonDeleted = this.arrayPokemon.filter( el => el.id !== id)
-          this.arrayPokemon = [...arrayWithoutPokemonDeleted];
-        },
-        error: error => {
-          alert('Ups!, algo salió mal, vuelve a intentarlo')
-          console.log(error)
-        }
-              
-      });
-    }   
+        .subscribe({
+          next: res => {
+            const arrayWithoutPokemonDeleted = this.arrayPokemon.filter(el => el.id !== id)
+            this.arrayPokemon = [...arrayWithoutPokemonDeleted];
+          },
+          error: error => {
+            alert('Ups!, algo salió mal, vuelve a intentarlo')
+            console.log(error)
+          }
+
+        });
+    }
   }
- 
- 
+
+
 
 }
 
